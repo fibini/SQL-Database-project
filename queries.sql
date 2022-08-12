@@ -63,6 +63,7 @@ SELECT owners.full_name, Count(*) AS value_occurence FROM animals INNER JOIN own
 -- advanced query multiple tables
 SELECT animals.name, date_of_visit FROM animals INNER JOIN visits ON animals.id = visits.animal_id WHERE visits.vet_id = 1 ORDER BY date_of_visit DESC LIMIT 1;
 SELECT COUNT(DISTINCT animal_id) FROM visits WHERE vet_id = 3;
+SELECT vets.name, species.name FROM vets LEFT JOIN specializations ON vets.id = specializations.vet_id LEFT JOIN species ON specializations.species_id = species.id;
 SELECT animals.name FROM visits INNER JOIN animals ON visits.animal_id = animals.id WHERE visits.vet_id = 3 AND visits.date_of_visit BETWEEN 'Apr-01-2020'AND 'Aug-30-2020';
 SELECT animals.name, COUNT(*) FROM visits INNER JOIN animals ON visits.animal_id = animals.id GROUP BY animals.name ORDER BY COUNT DESC LIMIT 1;
 SELECT animals.name,visits.date_of_visit FROM visits INNER JOIN animals ON visits.animal_id = animals.id WHERE visits.vet_id = 2 ORDER BY date_of_visit ASC LIMIT 1;
